@@ -34,6 +34,8 @@ public class TrackerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	private static final String JQUERY_VERSION = "jquery-3.3.1.min.js";
+
 	private static final Logger logger = Logger.getLogger(TrackerServlet.class);
 	
 	private static final int BUFFER_SIZE = 1024 * 16;
@@ -54,7 +56,7 @@ public class TrackerServlet extends HttpServlet {
 			response.sendRedirect(response.encodeRedirectURL(baseAction + "/config"));
 		// If JS resource
 		} else if(request.getPathInfo().startsWith("/js/")) {
-			if(request.getPathInfo().equals("/js/jquery-1.6.4.min.js")) {
+			if(request.getPathInfo().equals("/js/" + JQUERY_VERSION)) {
 				doResource(request, response, getJQueryMin(), "application/javascript");
 			} else if(request.getPathInfo().equals("/js/jquery.wordWrap.js")) {
 				doResource(request, response, getJQueryWordWrap(), "application/javascript");
@@ -267,7 +269,7 @@ public class TrackerServlet extends HttpServlet {
 		out.print((String) request.getAttribute("baseAction"));
 		out.print("/css/tracker.css\" /><script type=\"text/javascript\" src=\"");
 		out.print((String) request.getAttribute("baseAction"));
-		out.print("/js/jquery-1.6.4.min.js\"></script><script type=\"text/javascript\" src=\"");
+		out.print("/js/" + JQUERY_VERSION + "\"></script><script type=\"text/javascript\" src=\"");
 		out.print((String) request.getAttribute("baseAction"));
 		out.print("/js/jquery.wordWrap.js\"></script><script>$(document).ready( function() {");
 		if (request.getPathInfo().equals("/config")) {
