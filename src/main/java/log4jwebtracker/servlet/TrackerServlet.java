@@ -381,7 +381,7 @@ public class TrackerServlet extends HttpServlet {
 
 	synchronized private byte[] getJQueryMin() throws IOException {
 		if(jqueryMin==null) {
-			InputStream in = this.getClass().getResourceAsStream("js/jquery-3.3.1.min.js");
+			InputStream in = this.getClass().getResourceAsStream("js/" + JQUERY_VERSION);
 			jqueryMin = toByteArray(in);
 			in.close();
 		}
